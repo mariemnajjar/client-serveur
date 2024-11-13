@@ -22,7 +22,8 @@ typedef struct {
 
 // Structure  réponse ////////////////////////////////////////
 typedef struct {
-    int client_id;       
+    int serveur_id;   
+    int client_id;    
     int numbers[NMAX];   
     int n;               
 } Reponse;

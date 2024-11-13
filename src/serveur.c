@@ -27,7 +27,7 @@ int main() {
         printf("Requête reçue de client %d demandant %d nombres.\n", question.client_id, question.n);
 
         
-        reponse.client_id = question.client_id;
+        reponse.serveur_id = getpid();
         reponse.n = question.n;
         for (int i = 0; i < question.n; i++) {
             reponse.numbers[i] = rand() % 1000; 

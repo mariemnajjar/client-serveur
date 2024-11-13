@@ -33,7 +33,7 @@ int main() {
     close(fd_response);
 
     if (reponse.client_id == question.client_id) {
-        printf("Client %d : Nombres reçus : ", reponse.client_id);
+        printf("Serveur %d : Nombres reçus : ", reponse.serveur_id);
         for (int i = 0; i < reponse.n; i++) {
             printf("%d ", reponse.numbers[i]);
         }
@@ -41,7 +41,7 @@ int main() {
     }
 
     
-    kill(getppid(), SIGUSR1);
+    kill(reponse.serveur_id, SIGUSR1);
 
     return 0;
 }
