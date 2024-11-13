@@ -34,10 +34,12 @@ int main() {
 
     if (reponse.client_id == question.client_id) {
         printf("Serveur %d : Nombres reçus : ", reponse.serveur_id);
+        fflush(stdout);
         for (int i = 0; i < reponse.n; i++) {
             printf("%d ", reponse.numbers[i]);
         }
         printf("\n");
+        fflush(stdout);
     }
 
     
