@@ -10,3 +10,18 @@ void fin_serveur(int sig) {
     unlink(FIFO_RESPONSE);
     exit(0);
 }
+void main_handler(int sigint){ 
+    if ( sigint == SIGUSR1){ 
+        printf("%d \n", sigint);
+        fflush(stdout);
+        hand_reveil(sigint);
+    }else { 
+        // handle du signal quelconque 
+        fin_serveur(sigint);
+    }
+}
+void hand_reponse(int sig) {
+    printf("Client %d : Réponse reçue du serveur\n", getpid());
+}
+
+

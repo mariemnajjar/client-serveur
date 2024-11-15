@@ -1,20 +1,17 @@
-// serveur.c
-#define _XOPEN_SOURCE 700
-#include "serv_cli_fifo.h"
+#include "test.h"
 #include "Handlers_Serv.h"
-#include <time.h>
-#include <signal.h>
-#define MAX_POSIX_SIG 32 
+#include "unity.h"
+#define MAX_POSIX_SIG 32
 
-int main() {
-    int fd_request, fd_response;
+void test_serveur(int n, int *arr){
+int fd_request, fd_response;
     Question question;
     Reponse reponse;
-    srand(time(NULL));
+
 
     
-    mkfifo(FIFO_REQUEST, 0666);
-    mkfifo(FIFO_RESPONSE, 0666);
+    mkfifo(FIFO_TEST, 0666);
+    mkfifo(FIFO2_TEST, 0666);
 
 
     // handle all the signals provided by POSIX   
@@ -37,7 +34,7 @@ int main() {
 
     while (1) {
         printf("------------------------ Begin -----------------------------\n");
-        fd_request = open(FIFO_REQUEST, O_RDONLY);
+        fd_request = open(FIFO_TEST, O_RDONLY);
         read(fd_request, &question, sizeof(Question));
         close(fd_request);
 
@@ -47,23 +44,23 @@ int main() {
         reponse.serveur_id = getpid();
         reponse.client_id = question.client_id;
         reponse.n = question.n;
+        TEST_ASSERT_EQUAL_INT(n,question.n);
         for (int i = 0; i < question.n; i++) {
-            reponse.numbers[i] = rand() % 1000; 
+            reponse.numbers[i] = arr[i]; 
         }
 
         //la réponse dans fifo2
-        fd_response = open(FIFO_RESPONSE, O_WRONLY);
+        fd_response = open(FIFO2_TEST, O_WRONLY);
         write(fd_response, &reponse, sizeof(Reponse));
         close(fd_response);
-        printf("envoi du signal kill ...\n");
+
         // Envyer le signal au client
         kill(question.client_id, SIGUSR1);
-
-        printf("envoi du signal kill terminee \n");
         pause(); // wait server response
 
         printf("------------------------ end -----------------------------\n\n");
         fflush(stdout);
     }   
-    return 0;
+
+  
 }

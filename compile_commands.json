@@ -1,0 +1,44 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-I./Inc",
+      "-g",
+      "-c",
+      "-o",
+      "build/Handlers_Serv.o",
+      "src/Handlers_Serv.c"
+    ],
+    "directory": "/home/moktar/LinuxSystemTraining/TP_unix_mariem",
+    "file": "/home/moktar/LinuxSystemTraining/TP_unix_mariem/src/Handlers_Serv.c",
+    "output": "/home/moktar/LinuxSystemTraining/TP_unix_mariem/build/Handlers_Serv.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-I./Inc",
+      "-g",
+      "-c",
+      "-o",
+      "build/serveur.o",
+      "src/serveur.c"
+    ],
+    "directory": "/home/moktar/LinuxSystemTraining/TP_unix_mariem",
+    "file": "/home/moktar/LinuxSystemTraining/TP_unix_mariem/src/serveur.c",
+    "output": "/home/moktar/LinuxSystemTraining/TP_unix_mariem/build/serveur.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-I./Inc",
+      "-g",
+      "-c",
+      "-o",
+      "build/client.o",
+      "src/client.c"
+    ],
+    "directory": "/home/moktar/LinuxSystemTraining/TP_unix_mariem",
+    "file": "/home/moktar/LinuxSystemTraining/TP_unix_mariem/src/client.c",
+    "output": "/home/moktar/LinuxSystemTraining/TP_unix_mariem/build/client.o"
+  }
+]
