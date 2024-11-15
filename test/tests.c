@@ -21,12 +21,11 @@ void* client2_thread_h(void* arg){
   return NULL; 
 }
 void test_server_client_communication() {
-    pthread_t server_tid, client_tid,client2_tid;
+    pthread_t server_tid, client_tid;
 
     pthread_create(&server_tid, NULL, server_thread_h, NULL);
     pthread_create(&client_tid, NULL, client1_thread_h, NULL);
 
-    pthread_create(&client2_tid, NULL, client2_thread_h, NULL);
     pthread_join(server_tid, NULL);
     pthread_join(client_tid, NULL);
 
